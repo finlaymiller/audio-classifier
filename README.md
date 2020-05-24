@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Classifier
 
 This folder contains all the files needed to run the audio classifier.
@@ -20,7 +19,3 @@ This folder contains all the files needed to run the audio classifier.
 5. If you're classifying folder in real time, you can now begin to add files to the folder specified in step 4.1.
 
 If you're classifying a folder, all classifications will be written to a `.json` document with the audio filename, sample rate, number of samples, and classifier predictions saved. Otherwise, the predictions will just be displayed in the terminal.
-=======
-# auto-classifier
-Classify audio files using YouTube-8M and VGGish
->>>>>>> 02f50a31835cc8a80a1261769b380dcc68c8442f
