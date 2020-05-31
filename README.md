@@ -6,11 +6,17 @@ This folder contains all the files needed to run the audio classifier.
 2. Navigate to the folder where you've cloned this repo in your terminal.
 3. The classifier uses [VGGish](https://github.com/tensorflow/models/tree/master/research/audioset/vggish) to generate features from the audio files, and [Youtube-8M](https://github.com/google/youtube-8m) to do the classification using the generated features.
 
-   To use these models you'll have to download their supporting files using a terminal utility such as `curl`, `wget`, or PowerShell's `Invoke-Webrequest`. They can be downloaded from the link below:
+   To use these models you'll have to download their supporting files using a terminal utility such as `curl`, `wget`, or PowerShell's `Invoke-Webrequest`. They can be downloaded from [https://s3.amazonaws.com/audioanalysis/models.tar.gz](https://s3.amazonaws.com/audioanalysis/models.tar.gz) with something like
 
-   ```
-   https://s3.amazonaws.com/audioanalysis/models.tar.gz
-   ```
+    ```bash
+    curl -O https://s3.amazonaws.com/audioanalysis/models.tar.gz
+    ```
+
+    or
+
+    ```bash
+    wget https://s3.amazonaws.com/audioanalysis/models.tar.gz
+    ```
 
    Once downloaded, place the `models/` folder in the same folder as everything else.
 4. I _think_ that's all the files we need. To classify:
