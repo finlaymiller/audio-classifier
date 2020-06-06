@@ -13,30 +13,28 @@ parser.add_argument('outfile_name', type=str,
 					help='Name of file to write classifications to (must be JSON).')
 
 
-def clf_all_files_r():
-	rootdir = args.path_to_classify
-	outfilename = args.outfile_name
-	classes = dict()
+def classify(rootdir, outfilename):
 
 	for root, dirs, files in os.walk(rootdir, topdown=False):
 		for f in files:
-			print("Classifying ", f)
-			time.sleep(1)
+			classes = {}
+			print("Classifying \'{}\'".format(f))
+			time.sleep(0.5)
 			samplerate, shape, preds = parse_file.process_file(os.path.join(root, f))
 			if samplerate != 0:
-				classes[f] = []
-				classes[f].append({
+				classes[f] = {
+					"Filename": f,
 					"Sample Rate": samplerate,
-					"Shape": shape,
+					"Length": shape[0],
 					"Predictions": preds
-				})
+				}
 
-				with open(outfilename, 'w') as outfile:
-					print("Writing classification to file...")
-					json.dump(classes, outfile, indent='\t')
-
+				with open(outfilename, 'a') as o:
+					print("Writing classification to \'{}\'".format(o))
+					json.dump(classes[f], o)
+					o.write('\n')
 
 
 if __name__ == "__main__":
 	args = parser.parse_args()
-	clf_all_files_r()
+	classify(args.path_to_classify, args.outfile_name)

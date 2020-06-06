@@ -2,9 +2,6 @@ import numpy as np
 from scipy.io import wavfile
 import tensorflow as tf
 
-# parser = argparse.ArgumentParser(description='Read file and process audio')
-# parser.add_argument('wav_file', type=str, help='File to read and process')
-
 def process_file(wav_file):
 	"""Reads input wav file and prints predictions to terminal
 
