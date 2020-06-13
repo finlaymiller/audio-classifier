@@ -38,7 +38,8 @@ The file to run is `classify_audio.py`. It supports the following command line f
 | `--path`    | `-p`      | Filepath | Yes      | Path to folder containing files to classify                                                                                                  |
 | `--outfile` | `-o`      | Filename | No       | Name of file to write classifications to. `.jsonl` is the recommended type, since the classifier writes it output in the [JSON Lines](http://jsonlines.org/) format. If not specified the output file will be named `classifications_[CURRENT_TIMESTAMP].jsonl` where `CURRENT_TIMESTAMP` is, you guessed it, the current date and time.o                                                                                                                                       |
 | `--live`    | `-l`      | None     | No       | If specified, a [watchdog](https://pypi.org/project/watchdog/) will be created to classify files that are placed in the specified file path. |
-| `--verbose` | `--v`     | None     | None     | Additional information is printed                                                                                                            |
+| `--verbose` | `--v`     | None     | None     | Additional information is printed                                                                                                            
+
 So a couple typical runs might look like the following:
 
 | Command                                                                            | Result                                                                                                                                                         |
