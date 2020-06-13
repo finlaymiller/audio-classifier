@@ -2,8 +2,7 @@
 
 ## To Do
 
-* Add support for real-time classification
-* Add csv support
+* Add csv output option
 * Update to tensorflow 2 (probably not possible/realistic)
 
 ## How to use
