@@ -2,7 +2,7 @@ import numpy as np
 from scipy.io import wavfile
 import tensorflow as tf
 
-def process_file(wav_file):
+def process_file(wav_file, v):
 	"""Reads input wav file and prints predictions to terminal
 
 	Args:
@@ -21,8 +21,9 @@ def process_file(wav_file):
 	with WavProcessor() as proc:
 		predictions = proc.get_predictions(sr, data)
 
-	print("\n------------------------------------------------------------------------------------")
-	print(format_predictions(predictions))
-	print("------------------------------------------------------------------------------------\n")
+	if v is True:
+		print("\n------------------------------------------------------------------------------------")
+		print(format_predictions(predictions))
+		print("------------------------------------------------------------------------------------\n")
 
-	return sr, data.shape, format_predictions(predictions)
+	return sr, data.shape, predictions

@@ -23,7 +23,9 @@ def auto_classify():
 	global outfile
 
 	if args.live is False:
-		recursive.classify(args.path, outfile)
+		recursive.classify(args.path, outfile, args.verbose)
+	else:
+		live.watch(args.path, outfile, args.verbose)
 
 
 def verify_args():
@@ -39,6 +41,7 @@ def verify_args():
 	else:		
 		if os.path.exists(args.outfile):
 			print("The classifier will only write it's output to new files. Please specify a file that does not yet exist")
+			exit()
 		else:
 			outfile = args.outfile
 
@@ -48,7 +51,7 @@ def verify_args():
 			print("Classifying in live mode")
 		else:
 			print("Classifying in one-shot mode, files added after this will not be classified")
-		print("Classifying in location: \'{}\'".format(args.path))
+		print("Classifying files in location: \'{}\'".format(args.path))
 		print("Outputting classifications to: \'{}\'".format(outfile))
 
 
