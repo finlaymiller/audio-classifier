@@ -5,7 +5,7 @@
 * Add csv output option
 * Update to tensorflow 2 (probably not possible/realistic)
 
-## How to use
+## How to install
 
 This folder contains all the files needed to run the audio classifier.
 
@@ -26,9 +26,22 @@ This folder contains all the files needed to run the audio classifier.
     ```
 
    Once downloaded, place the `models/` folder in the same folder as everything else.
-4. I _think_ that's all the files we need. To classify:
-   1. To classify files being added to a folder in real-time run `python classify_live.py ./drop_audio_here`. You can replace `./drop_audio_here` with the name of any folder you like.
-   2. To classify all audio files in a directory recursively run `python classify_recursive.py {PATH TO FOLDER} {OUTPUT FILE NAME}`.
-5. If you're classifying folder in real time, you can now begin to add files to the folder specified in step 4.1.
 
-If you're classifying a folder, all classifications will be written to a `.json` document with the audio filename, sample rate, number of samples, and classifier predictions saved. Otherwise, the predictions will just be displayed in the terminal.
+## How to run
+
+Supports `.mp3` and `.wav` files in 16-bit PCM.
+
+The file to run is `classify_audio.py`. It supports the following command line flags:
+
+| Full Name   | Shortened | Argument | Required | Description                                                                                                                                  |
+|-------------|-----------|----------|----------|----------------------------------------------------------------------------------------------------------------------------------------------|
+| `--path`    | `-p`      | Filepath | Yes      | Path to folder containing files to classify                                                                                                  |
+| `--outfile` | `-o`      | Filename | No       | Name of file to write classifications to. `.jsonl` is the recommended type, since the classifier writes it output in the [JSON Lines](http://jsonlines.org/) format. If not specified the output file will be named `classifications_[CURRENT_TIMESTAMP].jsonl` where `CURRENT_TIMESTAMP` is, you guessed it, the current date and time.o                                                                                                                                       |
+| `--live`    | `-l`      | None     | No       | If specified, a [watchdog](https://pypi.org/project/watchdog/) will be created to classify files that are placed in the specified file path. |
+| `--verbose` | `--v`     | None     | None     | Additional information is printed                                                                                                            |
+So a couple typical runs might look like the following:
+
+| Command                                                                            | Result                                                                                                                                                         |
+|------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `python classify_audio.py -p ./my_audio --verbose`                                 | Classifies all audio files _currently_ in `./my_audio` with some extra prints. Writes output to the automatically-generated file.                              |
+| `python classify_audio.py --path ../../Desktop --live -o ./dropped_on_desktop.txt`  | Classifies all audio files dropped onto the Desktop (assuming path is correct) and writes output to a `.txt` file (format will still be in JSON Lines though). |

@@ -37,7 +37,7 @@ def verify_args():
 		exit()
 
 	if not args.outfile:
-		outfile = 'classifications_{:%Y%m%d%H%M%S}.json'.format(datetime.datetime.now())
+		outfile = 'classifications_{:%Y%m%d%H%M%S}.jsonl'.format(datetime.datetime.now())
 	else:		
 		if os.path.exists(args.outfile):
 			print("The classifier will only write it's output to new files. Please specify a file that does not yet exist")
