@@ -1,5 +1,13 @@
 # Classifier
 
+## To Do
+
+* Add support for real-time classification
+* Add csv support
+* Update to tensorflow 2 (probably not possible/realistic)
+
+## How to use
+
 This folder contains all the files needed to run the audio classifier.
 
 1. First, create a conda environment from the `auto_classifier_env.yml` file. For more specific instructions, see [here](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html).
